@@ -64,58 +64,20 @@ int install_payload(struct thread *td, struct install_payload_args* args)
 	// debug menu error patches
 	*(uint32_t *)(kernel_base + debug_menu_error_patch1) = 0;
 	*(uint32_t *)(kernel_base + debug_menu_error_patch2) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch3) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch4) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch5) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch6) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch7) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch8) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch9) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch10) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch11) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch12) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch13) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch14) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch15) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch16) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch17) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch18) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch19) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch20) = 0;
-	*(uint32_t *)(kernel_base + debug_menu_error_patch21) = 0;
-			
+
 	// flatz disable pfs signature check
 	*(uint32_t *)(kernel_base + disable_signature_check_patch) = 0x90C3C031;
 
-	// flatz enable debug RIFs	
+	// flatz enable debug RIFs
 	*(uint32_t *)(kernel_base + enable_debug_rifs_patch1) = 0x90C301B0;
 	*(uint32_t *)(kernel_base + enable_debug_rifs_patch2) = 0x90C301B0;
-				
+
 	// flatz allow sys_dynlib_dlsym in all processes 6.72
 	*(uint64_t*)(kernel_base + sys_dynlib_dlsym_patch) = 0x8B4890000001C7E9;
 
 	// spoof sdk_version - enable vr
 	*(uint32_t *)(kernel_base + sdk_version_patch) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch1) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch2) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch3) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch4) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch5) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch6) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch7) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch8) = FAKE_FW_VERSION;
-	*(uint32_t *)(kernel_base + sdk_version_patch9) = FAKE_FW_VERSION;
 
-	*(uint32_t *)(kernel_base + sdk_version_patch10) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch11) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch12) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch13) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch14) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch15) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch16) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch17) = FAKE_FW_VERSION_SDK;
-	*(uint32_t *)(kernel_base + sdk_version_patch18) = FAKE_FW_VERSION_SDK;
-						
 	// enable debug log
 	*(uint16_t*)(kernel_base + enable_debug_log_patch) = 0x38EB;
 
@@ -177,7 +139,7 @@ int _main(struct thread *td)
 	patch_update();
 
 	initSysUtil();
-	notify("Bienvenue sur PS4HEN FR v"VERSION);
+	notify("Welcome to PS4HEN v"VERSION);
 
 	printfsocket("Done.\n");
 

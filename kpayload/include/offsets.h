@@ -123,10 +123,4 @@
 // disable screenshot block
 #define disable_screenshot_patch        0x0DD2A6
 
-// enable enable vr
-#define enable_vr_patch                 0xDDDD70
-
-// SceShellCore patches - call sceKernelIsAssistMode for Testkits
-#define sceKernelIsAssistMode_patch     0x189630
-
 #endif

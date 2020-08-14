@@ -245,18 +245,6 @@ PAYLOAD_CODE int shellcore_fpkg_patch(void)
 		goto error;
 	}
 
-	// enable debug trophies on retail
-	ret = proc_write_mem(ssc, (void *)(text_seg_base + enable_vr_patch), 3, "\x31\xC0\xC3", &n);
-	if (ret)
-	{
-		goto error;
-	}
-	// enable Assist Mode on Testkit
-	ret = proc_write_mem(ssc, (void *)(text_seg_base + sceKernelIsAssistMode_patch), 5, "\x31\xC0\x90\x90\x90", &n);
-	if (ret)
-	{
-		goto error;
-	}
     // never disable screenshot - credits to Biorn1950
     ret = proc_write_mem(ssc, (void *)(text_seg_base + disable_screenshot_patch), 5, "\x90\x90\x90\x90\x90", &n);
     if (ret) {
